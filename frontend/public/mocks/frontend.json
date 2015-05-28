@@ -1,0 +1,95 @@
+{
+  "website": {
+      "id": 1,
+      "name": "Pizza & Pasta Service",
+      "culture": "da_DK",
+      "version": {
+          "compatible_to": 0.01,
+          "id": 0.01,
+          "link": "https://github.com/danieljameswilliams/hukaido/releases",
+          "updated_at": "23-05-2015 00:00:00"
+      },
+      "author": {
+          "first_name": "Daniel",
+          "id": 1,
+          "last_name": "Williams",
+          "link": "https://plus.google.com/111530445676775919018",
+          "name": "Daniel Williams"
+      },
+      "designer": {
+          "id": 1,
+          "link": "https://www.hungry.dk",
+          "name": "Hungry.dk"
+      },
+      "pages": [
+          {
+              "canonical": "/",
+              "content": [
+                  {
+                      "description": "Vi tilbyder en spr&oslash;d pizza eller al dente pasta, hver gang - Bare se hvad vores kunder mener om os.",
+                      "id": 1,
+                      "last_edited_at": "23-05-2015 00:00:00",
+                      "last_edited_by": {
+                          "id": 1,
+                          "name": "Daniel Williams"
+                      },
+                      "placeholders": [
+                          {
+                              "blocks": [
+                                  {
+                                      "bricks": [
+                                          {
+                                              "id": 1,
+                                              "name": "Manchet03",
+                                              "properties": [
+                                                  {
+                                                      "id": 1,
+                                                      "key": "headline",
+                                                      "name": "Overskrift",
+                                                      "value": "Hello, World"
+                                                  },
+                                                  {
+                                                      "id": 2,
+                                                      "key": "content",
+                                                      "name": "Indhold",
+                                                      "value": "Lorem ipsum dolor sit amet ..."
+                                                  }
+                                              ]
+                                          }
+                                      ],
+                                      "id": 1,
+                                      "name": "Manchet"
+                                  }
+                              ],
+                              "id": 1,
+                              "name": "MainContent"
+                          }
+                      ],
+                      "title": "H&oslash;j Kvalitet til lav pris hos Pizza &amp; Pasta Service",
+                      "type": "Active"
+                  }
+              ],
+              "created_at": "23-05-2015 00:00:00",
+              "created_by": {
+                  "id": 1,
+                  "name": "Daniel Williams"
+              },
+              "id": 1,
+              "last_edited_at": "23-05-2015 00:00:00",
+              "last_edited_by": {
+                  "id": 1,
+                  "name": "Daniel Williams"
+              },
+              "link": "/",
+              "name": "Forside",
+              "parent": null,
+              "type": "Frontpage"
+          }
+      ],
+      "response": {
+          "execution_time": 0.1874988,
+          "rendered_at": "23-05-2015 00:00:00",
+          "status": 200
+      }
+  }
+}

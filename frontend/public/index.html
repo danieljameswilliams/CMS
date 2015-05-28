@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="CMS" ng-controller="placeholdersCtrl">
+<head>
+  <!--
+    {{ website.designer.name }}
+    {{ website.designer.address }}
+    {{ website.designer.link }}
+  -->
+
+  <link rel="canonical" href="{{ page.canonical }}">
+
+  <meta charset="utf-8">
+  <meta name="author" content="{{ website.author.link }}">
+  <meta name="description" content="{{ page.description }}">
+  <meta name="fragment" content="!">
+  <meta name="generator" content="{{ website.generator }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" src="javascripts/lib/angular.js"></script>
+  <script type="text/javascript" src="javascripts/app.js"></script>
+  <script type="text/javascript" src="javascripts/partials/website/service.js"></script>
+  <script type="text/javascript" src="javascripts/partials/website/controller.js"></script>
+
+  <title>{{ page.title }}</title>
+</head>
+<body>
+  <div id="wrapper">
+    Hello: {{ page.name }}
+  </div>
+</body>
+</html>
