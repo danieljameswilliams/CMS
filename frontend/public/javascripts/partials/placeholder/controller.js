@@ -11,7 +11,9 @@ function placeholderCtrl( $scope, $filter, $element, $compile, $attrs, Website, 
     // There could be a placeholder in the markup, but not in the data,
     // so we need to check if they found a match in the data.
     if( typeof(placeholder) != 'undefined' ) {
-      var blocks = placeholder.blocks;
+      var blocks = placeholder.blocks.sort(function( a, b ) {
+        return a.order - b.order;
+      });
       var blocksHTML = [];
 
       for( var i = 0; i < blocks.length; i++ ) {

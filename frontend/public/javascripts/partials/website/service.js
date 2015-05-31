@@ -7,16 +7,16 @@ angular.module('website').factory('Website', function( $http, $q ) {
      * @param  {Boolean}
      * @return {Promise}
      */
-    get: function( pagesArray, pageDataOnly ) {
+    get: function( pageIDs, pageDataOnly ) {
       // TODO: Cache the response for a while via localStorage, so we dont need to fetch the same data,
       // and extend the response "pages" as they are loaded, for better history.back performance.
       // TODO: Figure out what page to get, from querystring or something.
-      return _getWebsite.call( this, pagesArray, pageDataOnly, $http, $q );
+      return _getWebsite.call( this, pageIDs, pageDataOnly, $http, $q );
     }
   };
 });
 
-function _getWebsite( pagesArray, pageDataOnly, $http, $q ) {
+function _getWebsite( pageIDs, pageDataOnly, $http, $q ) {
   // TODO: Make the request take a PagesArray querystring to pass to server.
   // TODO: Make the request take a pageDataOnly querystring to pass to server.
   var dfrd = $q.defer();

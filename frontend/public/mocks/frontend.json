@@ -44,7 +44,8 @@
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Headline01",
+                        "name": "Column1",
+                        "order": 1,
                         "properties": [
                           {
                             "id": 1,
@@ -62,7 +63,8 @@
                       },
                       {
                         "id": 2,
-                        "name": "Manchet03",
+                        "name": "Column2",
+                        "order": 2,
                         "properties": [
                           {
                             "id": 1,
@@ -80,13 +82,14 @@
                       }
                     ],
                     "id": 1,
-                    "name": "Manchet"
+                    "name": "Manchet",
+                    "order": 1
                   },
                   {
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Text",
+                        "name": "RichText",
                         "properties": [
                           {
                             "id": 1,
@@ -104,7 +107,8 @@
                       }
                     ],
                     "id": 2,
-                    "name": "Manchet"
+                    "name": "Text",
+                    "order": 2
                   }
                 ],
                 "id": 1,
@@ -117,6 +121,7 @@
                       {
                         "id": 1,
                         "name": "Spot01",
+                        "order": 1,
                         "properties": [
                           {
                             "id": 1,
@@ -134,7 +139,8 @@
                       }
                     ],
                     "id": 1,
-                    "name": "Manchet"
+                    "name": "Manchet",
+                    "order": 1
                   }
                 ],
                 "id": 2,

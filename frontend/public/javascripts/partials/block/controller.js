@@ -15,7 +15,9 @@ function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick 
     // There could be a block in the markup, but not in the data,
     // so we need to check if they found a match in the data.
     if( typeof(block) != 'undefined' ) {
-      var bricks = block.bricks;
+      var bricks = block.bricks.sort(function( a, b ) {
+        return a.order - b.order;
+      });
       var bricksHTML = [];
 
       for( var i = 0; i < bricks.length; i++ ) {
