@@ -18,7 +18,7 @@ angular.module('placeholder', []);
 // "Block" is used to create a DOM wrapper around the appropriate bricks for the matching block.
 angular.module('block', []);
 
-// "Brick" TODO: Add some text about the Brick module
+// "Brick" is used to render a brick from a given template and context.
 angular.module('brick', []);
 
 /**
