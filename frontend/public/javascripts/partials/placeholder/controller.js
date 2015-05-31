@@ -11,7 +11,7 @@ function placeholderCtrl( $scope, $filter, $element, $compile, $attrs, Website, 
   var placeholders = $scope.$parent.pageContent.placeholders;
 
   // Try to grep the matching placeholder-object from "website-data" to the placeholder we are currently editing.
-  var placeholder = $filter('filter')( placeholders, function (d) { return d.id === placeholderID; } )[0];
+  var placeholder = $filter('filter')( placeholders, function ( d ) { return d.id === placeholderID; } )[0];
 
   // There could be a placeholder in the markup, but not in the data,
   // so we need to check if they found a match in the data.

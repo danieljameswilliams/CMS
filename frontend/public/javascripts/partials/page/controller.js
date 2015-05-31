@@ -8,7 +8,7 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$element', '$compile
  * - Rendering the "base-template", and then activate the placeholder-controllers inside.
  */
 function pageCtrl( $scope, $element, $compile, Website ) {
-  Website.get().then(function(response) {
+  Website.get().then(function( response ) {
     var website = response.website;
     // TODO: Check that [0] is the correct page matching this location.pathname
     var page = website.pages[0];

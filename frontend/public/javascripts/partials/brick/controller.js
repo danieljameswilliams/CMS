@@ -10,7 +10,7 @@ function brickCtrl( $scope, $filter, $element, $attrs, Website ) {
   var block = $scope.$parent.block;
 
   // Try to grep the matching bricks-object from "website-data" to the brick we are currently editing.
-  var brick = $filter('filter')( block.bricks, function (d) { return d.id === brickID; } )[0];
+  var brick = $filter('filter')( block.bricks, function ( d ) { return d.id === brickID; } )[0];
 
   $element.html( brick.name );
 }

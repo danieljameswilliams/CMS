@@ -11,7 +11,7 @@ function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick 
   var placeholder = $scope.$parent.placeholder;
 
   // Try to grep the matching blocks-object from "website-data" to the block we are currently editing.
-  var block = $filter('filter')( placeholder.blocks, function (d) { return d.id === blockID; } )[0];
+  var block = $filter('filter')( placeholder.blocks, function ( d ) { return d.id === blockID; } )[0];
 
   // There could be a block in the markup, but not in the data,
   // so we need to check if they found a match in the data.
