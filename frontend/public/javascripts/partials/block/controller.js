@@ -3,7 +3,7 @@ angular.module('block').controller( 'blockCtrl', [ '$scope', '$filter', '$elemen
 function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick ) {
   Website.get().then(function(response) {
     var blockID = parseInt( $attrs.blockId );
-    var placeholderID = parseInt( $scope.$parent.placeholderID );
+    var placeholderID = parseInt( $scope.$parent.placeholderId );
     var placeholders = response.website.pages[0].content[0].placeholders;
 
     // Try to grep the matching data-object to the placeholder of the block that we are currently editing.
@@ -25,7 +25,7 @@ function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick 
       }
     }
 
-    $scope.blockID = $attrs.blockId;
+    $scope.blockId = $attrs.blockId;
 
     $element.html( bricksHTML.join('') );
     $compile( $element.contents() )( $scope );

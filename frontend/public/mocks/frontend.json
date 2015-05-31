@@ -44,7 +44,7 @@
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Manchet03",
+                        "name": "Headline01",
                         "properties": [
                           {
                             "id": 1,
@@ -86,7 +86,7 @@
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Manchet03",
+                        "name": "Text",
                         "properties": [
                           {
                             "id": 1,
@@ -116,7 +116,7 @@
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Manchet03",
+                        "name": "Spot01",
                         "properties": [
                           {
                             "id": 1,

@@ -22,7 +22,7 @@ function placeholderCtrl( $scope, $filter, $element, $compile, $attrs, Website, 
       }
     }
 
-    $scope.placeholderID = $attrs.placeholderId;
+    $scope.placeholderId = $attrs.placeholderId;
 
     $element.html( blocksHTML.join('') );
     $compile( $element.contents() )( $scope );
