@@ -7,7 +7,29 @@
 // And the other apps then get; and set; their data from and to this module.
 angular.module('website', []);
 
-// We add them all to the main app.
+// "Page" is used to load the meta data, the appropriate styles for the used bricks.
+// It is also used to render the base-template and calling the placeholder modules.
+angular.module('page', []);
+
+// "Placeholder" is used to render the appropriate blocks for the matching placeholder.
+// It would commonly be used in multiple instances, created from dynamic base-template markup.
+angular.module('placeholder', []);
+
+// "Block" is used to create a DOM wrapper around the appropriate bricks for the matching block.
+angular.module('block', []);
+
+// "Brick" TODO: Add some text about the Brick module
+angular.module('brick', []);
+
+/**
+ * Main App,
+ * TODO: Check if the modules could be initialized from parent-module instead of from main-app
+ */
+
 var app = angular.module('CMS', [
-  'website'
+  'website',
+  'page',
+  'placeholder',
+  'block',
+  'brick'
 ]);

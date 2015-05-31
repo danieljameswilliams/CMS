@@ -10,7 +10,8 @@ angular.module('website').factory('Website', function( $http, $q ) {
     get: function( pagesArray, pageDataOnly ) {
       // TODO: Cache the response for a while via localStorage, so we dont need to fetch the same data,
       // and extend the response "pages" as they are loaded, for better history.back performance.
-      return _getWebsite.call(this, pagesArray, pageDataOnly, $http, $q);
+      // TODO: Figure out what page to get, from querystring or something.
+      return _getWebsite.call( this, pagesArray, pageDataOnly, $http, $q );
     }
   };
 });
