@@ -3,7 +3,7 @@ angular.module('brick').controller( 'brickCtrl', [ '$scope', '$filter', '$elemen
 /**
  * The "Block Controller" is responsible for:
  * - Finding it's matching data source in "website-data".
- * - TODO: Adding each property as key's in the $scope.
+ * - Adding each property as key's in the $scope.
  * - Rendering itself with the given html-template.
  */
 function brickCtrl( $scope, $filter, $element, $compile, $attrs, Website ) {
@@ -14,7 +14,21 @@ function brickCtrl( $scope, $filter, $element, $compile, $attrs, Website ) {
   var brick = $filter('filter')( block.bricks, function ( d ) { return d.id === brickID; } )[0];
 
   // Making the scope availble for the template to use.
-  $scope.brick = brick;
+  $scope.brick = {
+    id: brick.id,
+    name: brick.name,
+    order: brick.order,
+    properties: {}
+  };
+
+  // Populating $scope.brick.properties with the brick properties.
+  for( var i = 0; i < brick.properties.length; i++ ) {
+    var property = brick.properties[i];
+    $scope.brick.properties[ property.key ] = {
+      name: property.name,
+      value: property.value
+    };
+  }
 
   // Rendering the plain markup of the newly created bricks-wrappers.
   $element.html( brick.html );
