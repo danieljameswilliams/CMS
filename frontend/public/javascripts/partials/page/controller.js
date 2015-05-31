@@ -1,35 +1,17 @@
-angular.module('page').controller( 'pageHeadCtrl', [ '$scope', 'Website', pageHeadCtrl ] );
-angular.module('page').controller( 'pageBodyCtrl', [ '$scope', '$element', '$compile', 'Website', pageBodyCtrl ] );
+angular.module('page').controller( 'pageCtrl', [ '$scope', '$element', '$compile', 'Website', pageCtrl ] );
 
-function pageHeadCtrl( $scope, Website ) {
+function pageCtrl( $scope, $element, $compile, Website ) {
   Website.get().then(function(response) {
     var website = response.website;
     // TODO: Check that [0] is the correct page matching this location.pathname
-    var page = response.website.pages[0];
+    var page = website.pages[0];
     var pageContent = page.content[0];
 
-    $scope.website = {
-      author: website.author,
-      culture: website.culture,
-      designer: website.designer,
-      generator: 'CMS'
-    };
+    $scope.pageContent = pageContent;
 
-    $scope.page = {
-      description: pageContent.description,
-      title: pageContent.title
-    };
-  });
-}
-
-function pageBodyCtrl( $scope, $element, $compile, Website ) {
-  Website.get().then(function(response) {
-    var website = response.website;
-    // TODO: Check that [0] is the correct page matching this location.pathname
-    var page = response.website.pages[0];
-    var pageContent = page.content[0];
-
-    $element.append( pageContent.template.html );
+    // Rendering the base-template inside body, which contains placeholders,
+    // where each placeholder will render it's own content.
+    $element.find('body').html( pageContent.template.html );
     $compile( $element.contents() )( $scope );
   });
 }

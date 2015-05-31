@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html data-ng-app="CMS">
-  <head data-ng-controller="pageHeadCtrl">
+<html data-ng-app="CMS" data-ng-controller="pageCtrl">
+  <head>
     <link rel="canonical" href="{{ page.canonical }}">
 
     <meta charset="utf-8">
     <meta name="author" content="{{ website.author.link }}">
-    <meta name="description" content="{{ page.description }}">
+    <meta name="description" content="{{ pageContent.description }}">
     <meta name="fragment" content="!">
-    <meta name="generator" content="{{ website.generator }}">
+    <meta name="generator" content="CMS">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="javascripts/lib/angular.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
-    <script type="text/javascript" src="javascripts/partials/website/controller.js"></script>
-    <script type="text/javascript" src="javascripts/partials/website/service.js"></script>
-    <script type="text/javascript" src="javascripts/partials/page/controller.js"></script>
-    <script type="text/javascript" src="javascripts/partials/placeholder/controller.js"></script>
     <script type="text/javascript" src="javascripts/partials/block/controller.js"></script>
     <script type="text/javascript" src="javascripts/partials/block/service.js"></script>
     <script type="text/javascript" src="javascripts/partials/brick/controller.js"></script>
     <script type="text/javascript" src="javascripts/partials/brick/service.js"></script>
+    <script type="text/javascript" src="javascripts/partials/page/controller.js"></script>
+    <script type="text/javascript" src="javascripts/partials/placeholder/controller.js"></script>
+    <script type="text/javascript" src="javascripts/partials/website/service.js"></script>
 
     <style type="text/css">
-      #wrapper div { background-color: #f1f1f1; padding: 20px; width: 300px; margin: 30px; }
-      #wrapper div.placeholder { background-color: #cecece; }
-      #wrapper div.block_section { background-color: #dedede; }
-      #wrapper div.brick_section { background-color: #333333; }
+      div { background-color: #f1f1f1; padding: 20px; width: 300px; margin: 30px; }
+      div.placeholder { background-color: #cecece; }
+      div.block_section { background-color: #dedede; }
+      div.brick_section { background-color: #333333; }
     </style>
 
-    <title>{{ page.title }}</title>
+    <title>{{ pageContent.title }}</title>
   </head>
   <body>
-    <div id="wrapper" data-ng-controller="pageBodyCtrl"></div>
+    <div id="wrapper"></div>
   </body>
 </html>

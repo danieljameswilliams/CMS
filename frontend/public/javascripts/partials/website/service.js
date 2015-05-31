@@ -3,7 +3,7 @@ angular.module('website').factory('Website', function( $http, $q ) {
     /**
      * Use the .get() method to retrieve data for a specific page, with additional website data.
      * For demo purposes, see "/interface/mocks/frontend.json"
-     * @param  {Array}  Allow one or more pages to be retrieved in one request.
+     * @param  {Array}  Allow one or more pages to be retrieved in one request, takes both ID or pathname
      * @param  {Boolean}
      * @return {Promise}
      */
@@ -19,6 +19,7 @@ angular.module('website').factory('Website', function( $http, $q ) {
 function _getWebsite( pageIDs, pageDataOnly, $http, $q ) {
   // TODO: Make the request take a PagesArray querystring to pass to server.
   // TODO: Make the request take a pageDataOnly querystring to pass to server.
+  // TODO: Check the pageIDs parameter, if each is a ID or pathname, and identify accordingly.
   var dfrd = $q.defer();
   var response = $http.get('/mocks/frontend.json');
 
