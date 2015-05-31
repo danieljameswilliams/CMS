@@ -35,6 +35,6 @@ function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick 
   // Rendering the plain markup of the newly created bricks-wrappers.
   $element.html( bricksHTML.join('') );
 
-  // Activating the brick angular-modules, from just plain markup to understanding ng-* etc.
+  // Activating the brick angular-bindings, from just plain markup to understanding ng-* etc.
   $compile( $element.contents() )( $scope );
 }

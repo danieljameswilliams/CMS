@@ -35,7 +35,7 @@ function placeholderCtrl( $scope, $filter, $element, $compile, $attrs, Website, 
     // Rendering the plain markup of the newly created blocks-wrappers.
     $element.html( blocksHTML.join('') );
 
-    // Activating the block angular-modules, from just plain markup to understanding ng-* etc.
+    // Activating the brick angular-bindings, from just plain markup to understanding ng-* etc.
     $compile( $element.contents() )( $scope );
   }
 }
