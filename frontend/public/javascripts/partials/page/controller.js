@@ -9,17 +9,22 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$element', '$compile
  */
 function pageCtrl( $scope, $element, $compile, Website ) {
   Website.get().then(function( response ) {
-    var website = response.website;
-    // TODO: Check that [0] is the correct page matching this location.pathname
-    var page = website.pages[0];
-    var pageContent = page.content[0];
+    if( typeof(response) == 'object' && response.hasOwnProperty('website') && response.website.hasOwnProperty('pages') ) {
+      var website = response.website;
+      // TODO: Check that [0] is the correct page matching this location.pathname
+      var page = website.pages[0];
+      var pageContent = page.content[0];
 
-    $scope.pageContent = pageContent;
+      $scope.pageContent = pageContent;
 
-    // Rendering the "base-template", directly from the "website-data".
-    $element.find('body').html( pageContent.template.html );
+      // Rendering the "base-template", directly from the "website-data".
+      $element.find('body').html( pageContent.template.html );
 
-    // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
-    $compile( $element.contents() )( $scope );
+      // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
+      $compile( $element.contents() )( $scope );
+    }
+    else {
+      alert('Something went wrong');
+    }
   });
 }
