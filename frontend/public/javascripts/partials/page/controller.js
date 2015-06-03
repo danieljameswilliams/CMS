@@ -8,11 +8,25 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$element', '$compile
  * - Rendering the "base-template", and then activate the placeholder-controllers inside.
  */
 function pageCtrl( $scope, $element, $compile, Website ) {
+  // We do "Website.get()" without passing a array, to get the current page.
   Website.get().then(function( response ) {
+    // First we are checking to see if there was a response we could actually use,
+    // For it to be usable, we need a object, that has a website - and that website need to have pages.
     if( typeof(response) == 'object' && response.hasOwnProperty('website') && response.website.hasOwnProperty('pages') ) {
       var website = response.website;
-      // TODO: Check that [0] is the correct page matching this location.pathname
-      var page = website.pages[0];
+      var page = {};
+
+      // We then need to check if the page we are about to show the user is actually in the response, as requested.
+      for( var i = 0; i < website.pages; i++ ) {
+        var responsePage = website.pages[i];
+
+        if( responsePage.link == window.location.pathname ) {
+          page = responsePage;
+          break;
+        }
+      }
+
+      // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
       var pageContent = page.content[0];
 
       $scope.pageContent = pageContent;
