@@ -9,9 +9,6 @@ angular.module('website').factory( 'Website', [ '$http', '$q', '$filter', functi
      * @return {Promise}
      */
     get: function( paths ) {
-      // TODO: Cache the response for a while via sessionStorage, so we dont need to fetch the same data,
-      // and extend the response "pages" as they are loaded, for better history.back performance.
-      // TODO: Figure out what page to get, from querystring or something.
       return getWebsiteData.call( this, paths, $http, $q, $filter );
     }
   };
