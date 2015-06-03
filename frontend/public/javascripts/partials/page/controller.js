@@ -14,31 +14,34 @@ function pageCtrl( $scope, $element, $compile, Website ) {
     // For it to be usable, we need a object, that has a website - and that website need to have pages.
     if( typeof(response) == 'object' && response.hasOwnProperty('website') && response.website.hasOwnProperty('pages') ) {
       var website = response.website;
-      var page = {};
+      var page;
 
       // We then need to check if the page we are about to show the user is actually in the response, as requested.
-      for( var i = 0; i < website.pages; i++ ) {
-        var responsePage = website.pages[i];
-
+      // TODO: I had a bug, where a simple for-loop couldn't be used, because the program never entered it, no matter what the i < [LENGTH] was.
+      angular.forEach( website.pages, function( responsePage ) {
         if( responsePage.link == window.location.pathname ) {
           page = responsePage;
-          break;
         }
+      });
+
+      if( typeof(page) == 'object' ) {
+        // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
+        var pageContent = page.content[0];
+
+        $scope.pageContent = pageContent;
+
+        // Rendering the "base-template", directly from the "website-data".
+        $element.find('body').html( pageContent.template.html );
+
+        // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
+        $compile( $element.contents() )( $scope );
       }
-
-      // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
-      var pageContent = page.content[0];
-
-      $scope.pageContent = pageContent;
-
-      // Rendering the "base-template", directly from the "website-data".
-      $element.find('body').html( pageContent.template.html );
-
-      // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
-      $compile( $element.contents() )( $scope );
+      else {
+        alert('The page was requested, and data was received in the correct format, but page was not there. (' +  window.location.pathname + ')');
+      }
     }
     else {
-      alert('Something went wrong');
+      alert('The page was requested, and data was received, but not in correct format.');
     }
   });
 }

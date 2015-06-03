@@ -104,11 +104,12 @@ function _fetchPagesFromRemote ( $q, $http, url ) {
   var response = $http.get( url );
 
   response.success(function( response ) {
-    dfrd.resolve(response);
+    dfrd.resolve( response );
   })
 
   response.error(function( response ) {
-    dfrd.resolve(response);
+    alert('An error occured getting a response from remote servers');
+    dfrd.resolve( response );
   });
 
   return dfrd.promise;
@@ -121,10 +122,11 @@ function _fetchPagesFromRemote ( $q, $http, url ) {
  */
 function _saveFetchedPagesToStorage( $filter, response, paths ) {
   var result = {};
+  var local = {};
 
   // Merge the local and newly fetched website object.
   if( sessionStorage.getItem('website') !== null ) {
-    var local = JSON.parse( sessionStorage.getItem('website') );
+    local = JSON.parse( sessionStorage.getItem('website') );
     var remote = response;
 
     var pagesWithDuplicates = local.website.pages.concat( remote.website.pages );
@@ -147,6 +149,7 @@ function _saveFetchedPagesToStorage( $filter, response, paths ) {
     // If this is the first request by the customer in this session, we simply just send him what we got.
     // There is nothing in sessionStorage just yet.
     result = response;
+    local = response;
   }
 
   // Save it to sessionStorage, to use later.
