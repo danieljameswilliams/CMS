@@ -26,10 +26,23 @@ function getWebsiteData( paths, $http, $q, $filter ) {
   var host = window.location.host;
   var url = 'http://127.0.0.1:5000/website/' + host + '/' + encodeURIComponent(fetchPaths) + '.json'; // http://api.cms.dk/website/www.example.com/%2F,%2Fabout-us.json
 
-  // We are now fetching the pages that wasn't already in Storage,
-  // when we have fetched them (callback), we merge the pages together with Storage,
-  // and return the requested-pages to whoever requested them.
-  return _fetchPagesFromRemote( $q, $http, url ).then( function( response ) { return _saveFetchedPagesToStorage.call( this, $filter, response, paths ); } );
+  if( fetchPaths.length > 0 ) {
+    // We are now fetching the pages that wasn't already in Storage,
+    // when we have fetched them (callback), we merge the pages together with Storage,
+    // and return the requested-pages to whoever requested them.
+    return _fetchPagesFromRemote( $q, $http, url ).then( function( response ) { return _saveFetchedPagesToStorage.call( this, $filter, response, paths ); } );
+  }
+  else {
+    // If we already had all the pages we were looking for,
+    // Then we just get the storedPages, which would only contain pages that were originally
+    // in the paths-variable, which is what we want.
+    var result = JSON.parse( sessionStorage.getItem('website') );
+    result.website.pages = storedPages;
+
+    var dfrd = $q.defer();
+      dfrd.resolve( result );
+    return dfrd.promise;
+  }
 }
 
 
