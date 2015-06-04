@@ -4,12 +4,20 @@ angular.module('website').factory( 'Website', [ '$http', '$q', '$filter', functi
   return {
     /**
      * Use the .get() method to retrieve data for a specific page, with additional website data.
-     * For demo purposes, see "/mocks/frontend.json"
      * @param  {Array}  Allow one or more pages to be retrieved in one request, takes both ID or pathname
      * @return {Promise}
      */
     get: function( paths ) {
       return getWebsiteData.call( this, paths, $http, $q, $filter );
+    },
+
+    /**
+     * Use the .fetch() method to force retrieve data for a specific page, with additional website data from remote.
+     * @param  {Array}  Allow one or more pages to be retrieved in one request, takes both ID or pathname
+     * @return {Promise}
+     */
+    fetch: function( paths ) {
+      return fetchWebsiteData.call( this, paths, $http, $q );
     }
   };
 } ] );
@@ -43,6 +51,16 @@ function getWebsiteData( paths, $http, $q, $filter ) {
       dfrd.resolve( result );
     return dfrd.promise;
   }
+}
+
+function fetchWebsiteData ( paths, $http, $q ) {
+  // If no parameter was passed in, we just take the current pathname,
+  var paths = paths || [ window.location.pathname ];
+
+  var host = window.location.host;
+  var url = 'http://127.0.0.1:5000/website/' + host + '/' + encodeURIComponent(paths) + '.json'; // http://api.cms.dk/website/www.example.com/%2F,%2Fabout-us.json
+
+  return _fetchPagesFromRemote( $q, $http, url );
 }
 
 
