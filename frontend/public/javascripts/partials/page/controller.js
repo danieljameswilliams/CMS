@@ -17,12 +17,14 @@ function pageCtrl( $scope, $element, $compile, Website ) {
       var page;
 
       // We then need to check if the page we are about to show the user is actually in the response, as requested.
-      // TODO: I had a bug, where a simple for-loop couldn't be used, because the program never entered it, no matter what the i < [LENGTH] was.
-      angular.forEach( website.pages, function( responsePage ) {
-        if( responsePage.link == window.location.pathname ) {
+      for( var i = 0; i < website.pages.length; i++ ) {
+        var responsePage = website.pages[i];
+
+        if(  responsePage.link == window.location.pathname ) {
           page = responsePage;
+          break;
         }
-      });
+      }
 
       if( typeof(page) == 'object' ) {
         // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
