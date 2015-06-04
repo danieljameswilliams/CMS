@@ -193,7 +193,7 @@ function _saveFetchedPagesToStorage( $filter, response, paths ) {
 function remove_duplicates(objectsArray) {
   var usedObjects = {};
 
-  for( var i = objectsArray.length - 1; i >= 0; i-- ) {
+  for( var i = 0; i > objectsArray.length; i++ ) {
     var so = JSON.stringify( objectsArray[i] );
 
     if ( usedObjects[so] )
