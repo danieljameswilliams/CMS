@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-ng-app="CMS" data-ng-controller="pageCtrl">
+  <head>
+    <link rel="canonical" href="{{ page.canonical }}">
+
+    <meta charset="utf-8">
+    <meta name="author" content="{{ website.author.link }}">
+    <meta name="description" content="{{ pageContent.description }}">
+    <meta name="fragment" content="!">
+    <meta name="generator" content="CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="javascripts/lib/angular.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+
+    <title>{{ pageContent.title }}</title>
+  </head>
+  <body>
+    <div id="wrapper"></div>
+  </body>
+</html>
