@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html data-ng-app="CMS" data-ng-controller="pageCtrl">
-  <head>
-    <link rel="canonical" href="{{ page.canonical }}">
-
+<html data-ng-app="CMS">
+  <head ng-controller="">
     <meta charset="utf-8">
-    <meta name="author" content="{{ website.author.link }}">
-    <meta name="description" content="{{ pageContent.description }}">
-    <meta name="fragment" content="!">
     <meta name="generator" content="CMS">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="javascripts/lib/angular.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/partials/router/config.js"></script>
 
-    <title>{{ pageContent.title }}</title>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/block/controller.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/block/service.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/brick/controller.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/brick/service.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/page/controller.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/placeholder/controller.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/website/service.js"></script>
+
+    <title>CMS - {{ page.title }}</title>
   </head>
   <body>
-    <div id="wrapper"></div>
+    <div id="wrapper">
+
+      <!-- Navigation Bar -->
+      <div id="navigation_bar" ng-controller="navigationCtrl">
+        <nav>
+          <ul>
+            <li>
+              <a href="/pages">Navigation</a>
+            </li>
+            <li>
+              <a href="/page/1">Ret Forsiden</a>
+            </li>
+            <li>
+              <a href="/settings">Indstillinger</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Global Content -->
+      <div id="content" ng-view></div>
+
+    </div>
   </body>
 </html>

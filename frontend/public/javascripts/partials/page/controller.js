@@ -7,6 +7,7 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$element', '$compile
  * - TODO: Building a stylesheet on-the-fly for the used bricks & base-template.
  * - Rendering the "base-template", and then activate the placeholder-controllers inside.
  */
+// TODO: Make the pageCtrl support ng-view
 function pageCtrl( $scope, $element, $compile, Website ) {
   // We do "Website.get()" without passing a array, to get the current page.
   Website.get().then(function( response ) {

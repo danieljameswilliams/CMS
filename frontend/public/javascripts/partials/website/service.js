@@ -18,6 +18,10 @@ angular.module('website').factory( 'Website', [ '$http', '$q', '$filter', functi
      */
     fetch: function( paths ) {
       return fetchWebsiteData.call( this, paths, $http, $q );
+    },
+
+    fetchAll: function() {
+      return fetchAllWebsiteData.call( this, $http, $q );
     }
   };
 } ] );
@@ -31,7 +35,7 @@ function getWebsiteData( paths, $http, $q, $filter ) {
   var fetchPaths = $filter('filter')( paths, function( path ) { return _excludePathsFoundInStorage.call( this, path, storedPages ); } );
 
   // We now begin the fetching process from remote.
-  var host = window.location.host;
+  var host = _findWebsiteHost();
   var url = 'http://127.0.0.1:5000/website/' + host + '/' + encodeURIComponent(fetchPaths) + '.json'; // http://api.cms.dk/website/www.example.com/%2F,%2Fabout-us.json
 
   if( fetchPaths.length > 0 ) {
@@ -57,10 +61,15 @@ function fetchWebsiteData ( paths, $http, $q ) {
   // If no parameter was passed in, we just take the current pathname,
   var paths = paths || [ window.location.pathname ];
 
-  var host = window.location.host;
+  var host = _findWebsiteHost();
   var url = 'http://127.0.0.1:5000/website/' + host + '/' + encodeURIComponent(paths) + '.json'; // http://api.cms.dk/website/www.example.com/%2F,%2Fabout-us.json
 
   return _fetchPagesFromRemote( $q, $http, url );
+}
+
+function fetchAllWebsiteData ( $http, $q ) {
+  // TODO: http://api.cms.dk/website/www.example.com/all.json
+  // With a Authentication response header.
 }
 
 
@@ -203,4 +212,22 @@ function remove_duplicates(objectsArray) {
   }
 
   return objectsArray;
+}
+
+function _findWebsiteHost() {
+  var host = window.location.host;
+
+  // If the host is the admin, then we need to find another way to figure out the real host.
+  // This will be saved in localStorage, and updated everytime you switch project in the CMS.
+  // TODO: Make a localStorage.setItem('host', [CLIENT-HOST]) in CMS when logging in and switching project.
+  if( host == '127.0.0.1:8888' ) {
+    if( typeof(Storage) !== 'undefined' && localStorage.getItem('host') !== null ) {
+      host = localStorage.getItem('host');
+    }
+    else {
+      alert('We couldn\'t figure out which website is attached to this CMS, either update your browser or logout and back in.');
+    }
+  }
+
+  return host;
 }
