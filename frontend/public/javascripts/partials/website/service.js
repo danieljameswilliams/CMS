@@ -28,11 +28,16 @@ angular.module('website').factory( 'Website', [ '$http', '$q', '$filter', functi
 
 function getWebsiteData( paths, $http, $q, $filter ) {
   // If no parameter was passed in, we just take the current pathname,
-  var paths = paths || [ window.location.pathname ];
+  var paths = (typeof(paths) !== 'undefined' && paths.length > 0) ? paths : [ window.location.pathname ];
+
+  console.log('Asked for the pages: ', paths);
 
   // We create a variable of the page-objects we have already stored in sessionStorage.
   var storedPages = _grepPagesfromStorage( $filter, paths );
   var fetchPaths = $filter('filter')( paths, function( path ) { return _excludePathsFoundInStorage.call( this, path, storedPages ); } );
+
+  console.log('Got ' + storedPages.length + ' from Storage');
+  console.log('Have to fetch ' + fetchPaths.length + ' from Remote');
 
   // We now begin the fetching process from remote.
   var host = _findWebsiteHost();
@@ -68,8 +73,13 @@ function fetchWebsiteData ( paths, $http, $q ) {
 }
 
 function fetchAllWebsiteData ( $http, $q ) {
-  // TODO: http://api.cms.dk/website/www.example.com/all.json
-  // With a Authentication response header.
+  var host = _findWebsiteHost();
+
+  // If the user has a Authorization token, it will be added as a Request Header
+  // In the $http-provider-config.
+  var url = 'http://127.0.0.1:5000/website/' + host + '/all.json'; // http://api.cms.dk/website/www.example.com/all.json
+
+  return _fetchPagesFromRemote( $q, $http, url );
 }
 
 
@@ -140,10 +150,16 @@ function _excludePathsFoundInStorage ( path, storedPages ) {
  */
 function _fetchPagesFromRemote ( $q, $http, url ) {
   var dfrd = $q.defer();
+  var config = {};
 
-  var response = $http.get( url );
+  if( typeof(Storage) !== 'undefined' && localStorage.getItem('authorization') !== null ) {
+    config.headers['Authorization'] = localStorage.getItem('authorization');
+  }
+
+  var response = $http.get( url, config );
 
   response.success(function( response ) {
+    console.log('Finished fetching from remote');
     dfrd.resolve( response );
   })
 
@@ -220,7 +236,7 @@ function _findWebsiteHost() {
   // If the host is the admin, then we need to find another way to figure out the real host.
   // This will be saved in localStorage, and updated everytime you switch project in the CMS.
   // TODO: Make a localStorage.setItem('host', [CLIENT-HOST]) in CMS when logging in and switching project.
-  if( host == '127.0.0.1:8888' ) {
+  if( host == '127.0.0.1:8888' || host === 'localhost:8888' ) {
     if( typeof(Storage) !== 'undefined' && localStorage.getItem('host') !== null ) {
       host = localStorage.getItem('host');
     }

@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html data-ng-app="CMS">
-  <head ng-controller="">
+  <head>
+    <base href="//localhost:8888/">
+
     <meta charset="utf-8">
     <meta name="generator" content="CMS">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="javascripts/lib/angular.js"></script>
+    <script type="text/javascript" src="javascripts/lib/angular-route.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
-    <script type="text/javascript" src="javascripts/partials/router/config.js"></script>
 
+    <!-- Partial files used only by 'Admin' app -->
+    <script type="text/javascript" src="javascripts/partials/dashboard/controller.js"></script>
+    <script type="text/javascript" src="javascripts/partials/page/controller.js"></script>
+    <script type="text/javascript" src="javascripts/partials/router/config.js"></script>
+    <script type="text/javascript" src="javascripts/partials/settings/controller.js"></script>
+
+    <!-- Partial files used by both 'Admin' & 'Public' app -->
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/block/controller.js"></script>
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/block/service.js"></script>
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/brick/controller.js"></script>
@@ -24,7 +33,7 @@
     <div id="wrapper">
 
       <!-- Navigation Bar -->
-      <div id="navigation_bar" ng-controller="navigationCtrl">
+      <div id="navigation_bar">
         <nav>
           <ul>
             <li>

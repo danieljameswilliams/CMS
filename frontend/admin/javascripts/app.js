@@ -3,9 +3,11 @@
  * All modules are put into its own folder with it's own 'controller and service'
  */
 
-// TODO: Login Service
-// TODO: Page Collections controller (Page structure viewer)
-// TODO: Page Designer (Extensions to Page modules)
+angular.module('router', []);
+
+angular.module('dashboard', []);
+
+angular.module('settings', []);
 
 ////////////////////
 ///// FRONTEND /////
@@ -36,8 +38,12 @@ angular.module('brick', []);
  */
 
 var app = angular.module('CMS', [
-  // Admin
+  // Dependencies
   'ngRoute',
+
+  // Admin
+  'router',
+  'dashboard',
 
   // Public
   'website',

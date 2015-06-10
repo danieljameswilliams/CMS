@@ -1,1 +1,10 @@
-Page List Template
+<h1>Pages on your website</h1>
+<ul>
+  <!-- TODO: Make it possible (possibly with a filter) in ng-repeat to put children of a page in child, and then not render it as a individual page -->
+  <li ng-repeat="page in pages | filter: { deleted: false }">
+    <strong>#{{ page.id }} {{ page.name }}</strong><br>
+    <span>Published: {{ page.published }} - Type: {{ page.type }}</span><br>
+    <a href="/page/{{ page.id }}">Edit page</a> - <a href="//{{ host }}{{ page.link }}">Go to page</a>
+    <br><br>
+  </li>
+</ul>
