@@ -30,9 +30,29 @@ function brickCtrl( $scope, $filter, $element, $compile, $attrs, Website ) {
     };
   }
 
+  var mode = _getProjectFolderByHost();
+
   // Rendering the plain markup of the newly created bricks-wrappers.
-  $element.html( brick.html );
+  // The "mode" will determine if we shall use the "public" html file (with clear-text)
+  // or the "admin" file that will render input to edit.
+  $element.html( brick.html[ mode ] );
 
   // Activating the brick angular-bindings, from just plain markup to understanding ng-* etc.
   $compile( $element.contents() )( $scope );
+}
+
+
+////////////////////
+///// PARTIALS /////
+////////////////////
+
+function _getProjectFolderByHost() {
+  var host = window.location.host;
+
+  if( host == '127.0.0.1:8888' || host === 'localhost:8888' ) {
+    return 'admin';
+  }
+  else {
+    return 'public';
+  }
 }

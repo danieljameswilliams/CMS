@@ -65,7 +65,10 @@
                         "id": 1,
                         "name": "Column1",
                         "order": 1,
-                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
                         "properties": [
                           {
                             "id": 1,
@@ -85,7 +88,10 @@
                         "id": 2,
                         "name": "Column2",
                         "order": 2,
-                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
                         "properties": [
                           {
                             "id": 1,
@@ -112,7 +118,10 @@
                         "id": 1,
                         "name": "RichText",
                         "order": 1,
-                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
                         "properties": [
                           {
                             "id": 1,
@@ -145,7 +154,10 @@
                         "id": 1,
                         "name": "Spot01",
                         "order": 1,
-                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
                         "properties": [
                           {
                             "id": 1,
