@@ -45,52 +45,134 @@
         "canonical": "/",
         "content": [
           {
-            "id": 1,
-            "type": "Draft",
-            "title": "H&oslash;j Kvalitet til lav pris hos Pizza &amp; Pasta Service",
             "description": "Vi tilbyder en spr&oslash;d pizza eller al dente pasta, hver gang - Bare se hvad vores kunder mener om os.",
-            "link": "https://revisions.hukai.do/1?token=accessfrombackend",
+            "id": 1,
+            "last_edited_at": "23-05-2015 00:00:00",
             "last_edited_by": {
               "id": 1,
               "name": "Daniel Williams"
             },
-            "last_edited_at": "23-05-2015 00:00:00",
             "template": {
               "id": 1,
               "html": "<div>Nothing Happened here!</div><div class=\"placeholder\" data-ng-controller=\"placeholderCtrl\" data-placeholder-id=\"1\">Loading content...</div><div>Nothing Happened here!</div><div class=\"placeholder\" data-ng-controller=\"placeholderCtrl\" data-placeholder-id=\"2\">Loading something else...</div>"
             },
             "placeholders": [
               {
-                "id": 1,
-                "name": "MainContent",
                 "blocks": [
                   {
-                    "id": 1,
-                    "name": "Manchet",
                     "bricks": [
                       {
                         "id": 1,
-                        "name": "Manchet03",
+                        "name": "Column1",
+                        "order": 1,
+                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                         "properties": [
                           {
                             "id": 1,
-                            "name": "Overskrift",
                             "key": "headline",
+                            "name": "Overskrift",
                             "value": "Hello, World"
                           },
                           {
                             "id": 2,
-                            "name": "Indhold",
                             "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        ]
+                      },
+                      {
+                        "id": 2,
+                        "name": "Column2",
+                        "order": 2,
+                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "properties": [
+                          {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
                             "value": "Lorem ipsum dolor sit amet ..."
                           }
                         ]
                       }
-                    ]
+                    ],
+                    "id": 1,
+                    "name": "Manchet",
+                    "order": 1
+                  },
+                  {
+                    "bricks": [
+                      {
+                        "id": 1,
+                        "name": "RichText",
+                        "order": 1,
+                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "properties": [
+                          {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        ]
+                      }
+                    ],
+                    "id": 2,
+                    "name": "Text",
+                    "order": 2
                   }
-                ]
+                ],
+                "id": 1,
+                "name": "MainContent"
+              },
+              {
+                "blocks": [
+                  {
+                    "bricks": [
+                      {
+                        "id": 1,
+                        "name": "Spot01",
+                        "order": 1,
+                        "html": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                        "properties": [
+                          {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        ]
+                      }
+                    ],
+                    "id": 1,
+                    "name": "Manchet",
+                    "order": 1
+                  }
+                ],
+                "id": 2,
+                "name": "Right Column"
               }
-            ]
+            ],
+            "title": "H&oslash;j Kvalitet til lav pris hos Pizza &amp; Pasta Service",
+            "type": "Active"
           }
         ],
         "audit": [

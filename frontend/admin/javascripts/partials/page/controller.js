@@ -1,5 +1,5 @@
 angular.module('page').controller( 'pageStructureCtrl', [ '$scope', 'Website', pageStructureCtrl ] );
-angular.module('page').controller( 'pageDesignerCtrl', [ '$scope', '$q', '$routeParams', '$compile', 'Website', pageDesignerCtrl ] );
+angular.module('page').controller( 'pageDesignerCtrl', [ '$scope', '$q', '$routeParams', '$sce', '$compile', 'Website', pageDesignerCtrl ] );
 // There is also all the controllers to the 'page' module in 'public/page/controller.js'
 
 
@@ -23,7 +23,7 @@ function pageStructureCtrl ( $scope, Website ) {
   });
 }
 
-function pageDesignerCtrl ( $scope, $q, $routeParams, $compile, Website ) {
+function pageDesignerCtrl ( $scope, $q, $routeParams, $sce, $compile, Website ) {
   var pageID = $routeParams.id;
 
   getPage( $q, Website, '/' ).then(function( page ) {
@@ -33,14 +33,13 @@ function pageDesignerCtrl ( $scope, $q, $routeParams, $compile, Website ) {
     $scope.pageContent = pageContent;
 
     // Rendering the "base-template", directly from the "website-data".
-    $scope.pageBaseTemplate = pageContent.template.html;
+    $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html );
 
-    // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
-    //$compile( $element.contents() )( $scope );
+    // We need to compile the baseTemplate to make the controllers of the blocks and the bricks run.
+    // Normally we would just write "$compile( $element.contents() )( $scope );", but because the content is rendered via
+    // the router.templateUrl, we don't have the access to $element yet.
+
+    // So instead this is done in HTML (page.html) <div class="page" bind-html-compile="baseTemplateHTML"></div>
+    // Using a 3rd party plugin called bind-html-compile https://github.com/incuna/angular-bind-html-compile
   });
 }
-
-
-////////////////////
-///// PARTIALS /////
-////////////////////

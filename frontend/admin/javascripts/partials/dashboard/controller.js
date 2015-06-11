@@ -2,5 +2,4 @@ angular.module('dashboard').controller( 'dashboardCtrl', [ '$scope', dashboardCt
 
 
 function dashboardCtrl ( $scope ) {
-  console.log('Controller Init');
 }

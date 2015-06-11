@@ -10,6 +10,7 @@
 
     <script type="text/javascript" src="javascripts/lib/angular.js"></script>
     <script type="text/javascript" src="javascripts/lib/angular-route.js"></script>
+    <script type="text/javascript" src="javascripts/lib/angular-bind-html-compile.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
 
     <!-- Partial files used only by 'Admin' app -->
@@ -26,6 +27,13 @@
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/page/controller.js"></script>
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/placeholder/controller.js"></script>
     <script type="text/javascript" src="http://127.0.0.1:8080/javascripts/partials/website/service.js"></script>
+
+    <style type="text/css">
+      .page div { background-color: #f1f1f1; padding: 20px; width: 300px; margin: 30px; }
+      .page div.placeholder { background-color: #cecece; }
+      .page div.block_section { background-color: #dedede; }
+      .page div.brick_section { background-color: #333333; }
+    </style>
 
     <title>CMS - {{ page.title }}</title>
   </head>

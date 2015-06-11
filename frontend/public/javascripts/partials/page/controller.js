@@ -9,7 +9,6 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$q', '$element', '$c
  * - Rendering the "base-template", and then activate the placeholder-controllers inside.
  */
 
-// TODO: Make the pageCtrl support ng-view
 function pageCtrl( $scope, $q, $element, $compile, Website ) {
   getPage( $q, Website, window.location.pathname ).then(function( page ) {
     // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]

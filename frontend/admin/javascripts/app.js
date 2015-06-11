@@ -34,12 +34,12 @@ angular.module('brick', []);
 
 /**
  * Main App,
- * TODO: Check if the modules could be initialized from parent-module instead of from main-app
  */
 
 var app = angular.module('CMS', [
   // Dependencies
   'ngRoute',
+  'angular-bind-html-compile',
 
   // Admin
   'router',

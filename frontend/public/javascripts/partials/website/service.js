@@ -159,7 +159,6 @@ function _fetchPagesFromRemote ( $q, $http, url ) {
   var response = $http.get( url, config );
 
   response.success(function( response ) {
-    console.log('Finished fetching from remote');
     dfrd.resolve( response );
   })
 
