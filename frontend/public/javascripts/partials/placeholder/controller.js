@@ -1,4 +1,4 @@
-angular.module('page').controller( 'placeholderCtrl', [ '$scope', '$filter', '$element', '$compile', '$attrs', 'Website', 'Block', placeholderCtrl ] );
+angular.module('placeholder').controller( 'placeholderCtrl', [ '$scope', '$rootScope', '$filter', '$element', '$compile', '$attrs', 'Website', 'Block', placeholderCtrl ] );
 
 /**
  * The "Placeholder Controller" is responsible for:
@@ -6,9 +6,9 @@ angular.module('page').controller( 'placeholderCtrl', [ '$scope', '$filter', '$e
  * - Making the scope availble for all descendants to use.
  * - Getting & Rendering the blocks-wrappers, in the correct order - and then activate the blocks-controllers.
  */
-function placeholderCtrl( $scope, $filter, $element, $compile, $attrs, Website, Block ) {
+function placeholderCtrl( $scope, $rootScope, $filter, $element, $compile, $attrs, Website, Block ) {
   var placeholderID = parseInt( $attrs.placeholderId );
-  var placeholders = $scope.$parent.pageContent.placeholders;
+  var placeholders = $rootScope.pageContent.placeholders;
 
   // Try to grep the matching placeholder-object from "website-data" to the placeholder we are currently editing.
   var placeholder = $filter('filter')( placeholders, function ( d ) { return d.id === placeholderID; } )[0];

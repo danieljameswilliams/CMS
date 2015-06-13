@@ -1,4 +1,4 @@
-angular.module('block').controller( 'blockCtrl', [ '$scope', '$filter', '$element', '$compile', '$attrs', 'Website', 'Brick', blockCtrl ] );
+angular.module('block').controller( 'blockCtrl', [ '$scope', '$rootScope', '$filter', '$element', '$compile', '$attrs', 'Website', 'Brick', blockCtrl ] );
 
 /**
  * The "Block Controller" is responsible for:
@@ -6,7 +6,7 @@ angular.module('block').controller( 'blockCtrl', [ '$scope', '$filter', '$elemen
  * - Making the scope availble for all descendants to use.
  * - Getting & Rendering the bricks-wrappers, in the correct order - and then activate the bricks-controllers.
  */
-function blockCtrl( $scope, $filter, $element, $compile, $attrs, Website, Brick ) {
+function blockCtrl( $scope, $rootScope, $filter, $element, $compile, $attrs, Website, Brick ) {
   var blockID = parseInt( $attrs.blockId );
   var placeholder = $scope.$parent.placeholder;
 

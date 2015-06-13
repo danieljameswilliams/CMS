@@ -50,20 +50,21 @@
                           "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                           "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
                         },
-                        "properties": [
-                          {
+                        "properties":
+                        {
+                          "headline": {
                             "id": 1,
                             "key": "headline",
                             "name": "Overskrift",
                             "value": "Hello, World"
                           },
-                          {
+                          "content": {
                             "id": 2,
                             "key": "content",
                             "name": "Indhold",
                             "value": "Lorem ipsum dolor sit amet ..."
                           }
-                        ]
+                        }
                       },
                       {
                         "id": 2,
@@ -73,20 +74,21 @@
                           "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                           "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
                         },
-                        "properties": [
-                          {
+                        "properties":
+                        {
+                          "headline": {
                             "id": 1,
                             "key": "headline",
                             "name": "Overskrift",
                             "value": "Hello, World"
                           },
-                          {
+                          "content": {
                             "id": 2,
                             "key": "content",
                             "name": "Indhold",
                             "value": "Lorem ipsum dolor sit amet ..."
                           }
-                        ]
+                        }
                       }
                     ],
                     "id": 1,
@@ -103,20 +105,21 @@
                           "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                           "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
                         },
-                        "properties": [
-                          {
+                        "properties":
+                        {
+                          "headline": {
                             "id": 1,
                             "key": "headline",
                             "name": "Overskrift",
                             "value": "Hello, World"
                           },
-                          {
+                          "content": {
                             "id": 2,
                             "key": "content",
                             "name": "Indhold",
                             "value": "Lorem ipsum dolor sit amet ..."
                           }
-                        ]
+                        }
                       }
                     ],
                     "id": 2,
@@ -139,20 +142,21 @@
                           "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                           "admin": "<i><input type=\"text\" ng-change=\"inputChange( brick.properties.headline.value )\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
                         },
-                        "properties": [
-                          {
+                        "properties":
+                        {
+                          "headline": {
                             "id": 1,
                             "key": "headline",
                             "name": "Overskrift",
                             "value": "Hello, World"
                           },
-                          {
+                          "content": {
                             "id": 2,
                             "key": "content",
                             "name": "Indhold",
                             "value": "Lorem ipsum dolor sit amet ..."
                           }
-                        ]
+                        }
                       }
                     ],
                     "id": 1,

@@ -1,5 +1,5 @@
 angular.module('page').controller( 'pageStructureCtrl', [ '$scope', 'Website', pageStructureCtrl ] );
-angular.module('page').controller( 'pageDesignerCtrl', [ '$scope', '$q', '$routeParams', '$sce', '$compile', 'Website', pageDesignerCtrl ] );
+angular.module('page').controller( 'pageDesignerCtrl', [ '$scope', '$rootScope', '$q', '$routeParams', '$sce', '$compile', 'Website', pageDesignerCtrl ] );
 // There is also all the controllers to the 'page' module in 'public/page/controller.js'
 
 
@@ -23,17 +23,27 @@ function pageStructureCtrl ( $scope, Website ) {
   });
 }
 
-function pageDesignerCtrl ( $scope, $q, $routeParams, $sce, $compile, Website ) {
+function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile, Website ) {
   var pageID = $routeParams.id;
 
   getPage( $q, Website, '/' ).then(function( page ) {
-    // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
+    // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
     var pageContent = page.content[0];
 
-    $scope.pageContent = pageContent;
+    $rootScope.pageContent = pageContent;
 
     // Rendering the "base-template", directly from the "website-data".
     $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html );
+
+    $scope.$watch('pageContent', function(newValue, oldValue) {
+      var result = JSON.parse( sessionStorage.getItem('website') );
+      // TODO: Find out what page Array index it should overwrite
+      // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
+      result.website.pages[0].content[0] = newValue;
+
+      // Create a saveWebsiteToStorage method
+      sessionStorage.setItem( 'website', JSON.stringify( result ) );
+    }, true);
 
     // We need to compile the baseTemplate to make the controllers of the blocks and the bricks run.
     // Normally we would just write "$compile( $element.contents() )( $scope );", but because the content is rendered via

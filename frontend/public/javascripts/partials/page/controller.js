@@ -1,4 +1,4 @@
-angular.module('page').controller( 'pageCtrl', [ '$scope', '$q', '$element', '$compile', 'Website', pageCtrl ] );
+angular.module('page').controller( 'pageCtrl', [ '$scope', '$rootScope', '$q', '$element', '$compile', 'Website', pageCtrl ] );
 // There is also all the controllers to the 'page' module in 'admin/page/controller.js'
 
 /**
@@ -9,12 +9,13 @@ angular.module('page').controller( 'pageCtrl', [ '$scope', '$q', '$element', '$c
  * - Rendering the "base-template", and then activate the placeholder-controllers inside.
  */
 
-function pageCtrl( $scope, $q, $element, $compile, Website ) {
+function pageCtrl( $scope, $rootScope, $q, $element, $compile, Website ) {
+
   getPage( $q, Website, window.location.pathname ).then(function( page ) {
     // A page can (to the public) only have 1 object of content, and therefore we know it is also [0]
     var pageContent = page.content[0];
 
-    $scope.pageContent = pageContent;
+    $rootScope.pageContent = pageContent;
 
     // Rendering the "base-template", directly from the "website-data".
     $element.find('body').html( pageContent.template.html );
