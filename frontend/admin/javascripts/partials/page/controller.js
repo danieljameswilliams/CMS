@@ -24,7 +24,7 @@ function pageStructureCtrl ( $scope, Website ) {
 }
 
 function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile, Website ) {
-  var pageID = $routeParams.id;
+  var pageId = $routeParams.id;
 
   getPage( $q, Website, '/' ).then(function( page ) {
     // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
@@ -37,9 +37,12 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
 
     $scope.$watch('pageContent', function(newValue, oldValue) {
       var result = JSON.parse( sessionStorage.getItem('website') );
-      // TODO: Find out what page Array index it should overwrite
+
+      // Find out what index in Storage the website is, so you can overwrite it, with the new content.
+      var index = getIndexInPagesArrayFromPageID( pageId );
+
       // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
-      result.website.pages[0].content[0] = newValue;
+      result.website.pages[ index ].content[0] = newValue;
 
       // Create a saveWebsiteToStorage method
       sessionStorage.setItem( 'website', JSON.stringify( result ) );
@@ -52,4 +55,20 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
     // So instead this is done in HTML (page.html) <div class="page" bind-html-compile="baseTemplateHTML"></div>
     // Using a 3rd party plugin called bind-html-compile https://github.com/incuna/angular-bind-html-compile
   });
+}
+
+
+////////////////////
+///// PARTIALS /////
+////////////////////
+
+function getIndexInPagesArrayFromPageID ( pageId ) {
+  var pages = JSON.parse( sessionStorage.getItem('website') ).website.pages;
+
+  for ( var i = 0; i < pages.length; i++ ) {
+    if ( pages[i]['id'] == pageId ) {
+      return i;
+    }
+  }
+  return;
 }
