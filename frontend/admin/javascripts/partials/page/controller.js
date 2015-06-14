@@ -35,18 +35,8 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
     // Rendering the "base-template", directly from the "website-data".
     $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html );
 
-    $scope.$watch('pageContent', function(newValue, oldValue) {
-      var result = JSON.parse( sessionStorage.getItem('website') );
-
-      // Find out what index in Storage the website is, so you can overwrite it, with the new content.
-      var index = getIndexInPagesArrayFromPageID( pageId );
-
-      // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
-      result.website.pages[ index ].content[0] = newValue;
-
-      // Create a saveWebsiteToStorage method
-      sessionStorage.setItem( 'website', JSON.stringify( result ) );
-    }, true);
+    // Event Listeners
+    $scope.$watch('pageContent', function( newValue, oldValue ) { return onPageContentChange.call( this, newValue, oldValue, pageId ); }, true);
 
     // We need to compile the baseTemplate to make the controllers of the blocks and the bricks run.
     // Normally we would just write "$compile( $element.contents() )( $scope );", but because the content is rendered via
@@ -71,4 +61,17 @@ function getIndexInPagesArrayFromPageID ( pageId ) {
     }
   }
   return;
+}
+
+function onPageContentChange ( newValue, oldValue, pageId ) {
+  var result = JSON.parse( sessionStorage.getItem('website') );
+
+  // Find out what index in Storage the website is, so you can overwrite it, with the new content.
+  var index = getIndexInPagesArrayFromPageID( pageId );
+
+  // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
+  result.website.pages[ index ].content[0] = newValue;
+
+  // Create a saveWebsiteToStorage method
+  sessionStorage.setItem( 'website', JSON.stringify( result ) );
 }
