@@ -1,4 +1,4 @@
-angular.module('placeholder').controller( 'placeholderCtrl', [ '$scope', '$rootScope', '$filter', '$element', '$compile', '$attrs', 'Website', 'Block', placeholderCtrl ] );
+angular.module('placeholder').controller( 'placeholderCtrl', [ '$scope', '$rootScope', '$filter', '$element', '$compile', '$attrs', 'Website', placeholderCtrl ] );
 
 /**
  * The "Placeholder Controller" is responsible for:
@@ -6,7 +6,7 @@ angular.module('placeholder').controller( 'placeholderCtrl', [ '$scope', '$rootS
  * - Making the scope availble for all descendants to use.
  * - Getting & Rendering the blocks-wrappers, in the correct order - and then activate the blocks-controllers.
  */
-function placeholderCtrl( $scope, $rootScope, $filter, $element, $compile, $attrs, Website, Block ) {
+function placeholderCtrl( $scope, $rootScope, $filter, $element, $compile, $attrs, Website ) {
   var placeholderID = parseInt( $attrs.placeholderId );
   var placeholders = $rootScope.pageContent.placeholders;
 
@@ -16,26 +16,7 @@ function placeholderCtrl( $scope, $rootScope, $filter, $element, $compile, $attr
   // There could be a placeholder in the markup, but not in the data,
   // so we need to check if they found a match in the data.
   if( typeof(placeholder) != 'undefined' ) {
-    var blocks = placeholder.blocks.sort(function( a, b ) {
-      return a.order - b.order;
-    });
-    var blocksHTML = [];
-
-    // Getting the blocks-wrappers <div/>-container
-    for( var i = 0; i < blocks.length; i++ ) {
-      var block = blocks[i];
-      var blockElement = Block.create( block );
-
-      blocksHTML.push( blockElement );
-    }
-
     // Making the scope availble for all descendants to use.
     $scope.placeholder = placeholder;
-
-    // Rendering the plain markup of the newly created blocks-wrappers.
-    $element.html( blocksHTML.join('') );
-
-    // Activating the brick angular-bindings, from just plain markup to understanding ng-* etc.
-    $compile( $element.contents() )( $scope );
   }
 }
