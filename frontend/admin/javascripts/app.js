@@ -34,6 +34,7 @@ var app = angular.module('CMS', [
   // Dependencies
   'ngRoute',
   'angular-bind-html-compile',
+  'ui.sortable',
 
   // Admin
   'router',
