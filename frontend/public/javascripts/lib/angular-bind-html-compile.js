@@ -11,7 +11,7 @@
                     return scope.$eval(attrs.bindHtmlCompile);
                 }, function (value) {
                     element.html(value);
-                    $compile(element.contents())($rootScope);
+                    $compile(element.contents())(scope);
                 });
             }
         };

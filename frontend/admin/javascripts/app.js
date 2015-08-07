@@ -25,12 +25,6 @@ angular.module('page', []);
 // It would commonly be used in multiple instances, created from dynamic base-template markup.
 angular.module('placeholder', []);
 
-// "Block" is used to create a DOM wrapper around the appropriate bricks for the matching block.
-angular.module('block', []);
-
-// "Brick" is used to render a brick from a given template and context.
-angular.module('brick', []);
-
 
 /**
  * Main App,
@@ -48,7 +42,5 @@ var app = angular.module('CMS', [
   // Public
   'website',
   'page',
-  'placeholder',
-  'block',
-  'brick'
+  'placeholder'
 ]);
