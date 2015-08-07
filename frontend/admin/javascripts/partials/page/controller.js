@@ -33,7 +33,7 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
     $rootScope.pageContent = pageContent;
 
     // Rendering the "base-template", directly from the "website-data".
-    $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html );
+    $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html.admin );
 
     // Event Listeners
     $scope.$watch('pageContent', function( newValue, oldValue ) { return onPageContentChange.call( this, newValue, oldValue, pageId ); }, true);

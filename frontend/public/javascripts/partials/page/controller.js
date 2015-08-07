@@ -18,7 +18,7 @@ function pageCtrl( $scope, $rootScope, $q, $element, $compile, Website ) {
     $rootScope.pageContent = pageContent;
 
     // Rendering the "base-template", directly from the "website-data".
-    $element.find('body').html( pageContent.template.html );
+    $element.find('body').html( pageContent.template.html.public );
 
     // Activating it's descendant angular-modules, from just plain markup to understanding ng-* etc.
     $compile( $element.contents() )( $scope );

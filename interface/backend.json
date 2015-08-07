@@ -54,7 +54,10 @@
             },
             "template": {
               "id": 1,
-              "html": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div ui-sortable=\"\" data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>"
+              "html": {
+                "public": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>",
+                "admin": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div></div>"
+              }
             },
             "placeholders": [
               {
@@ -239,7 +242,10 @@
             "last_edited_at": "23-05-2015 00:00:00",
             "template": {
               "id": 1,
-              "html": "<div>Nothing Happened here!</div><div class=\"placeholder\" data-ng-controller=\"placeholderCtrl\" data-placeholder-id=\"1\">Loading content...</div><div>Nothing Happened here!</div><div class=\"placeholder\" data-ng-controller=\"placeholderCtrl\" data-placeholder-id=\"2\">Loading something else...</div>"
+              "html": {
+                "public": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>",
+                "admin": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div></div>"
+              }
             },
             "placeholders": [
               {
