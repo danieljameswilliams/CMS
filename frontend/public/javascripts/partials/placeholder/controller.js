@@ -7,7 +7,7 @@ angular.module('placeholder').controller( 'placeholderCtrl', [ '$scope', '$rootS
  * - Getting & Rendering the blocks-wrappers, in the correct order - and then activate the blocks-controllers.
  */
 function placeholderCtrl( $scope, $rootScope, $filter, $element, $compile, $attrs, Website ) {
-  var placeholderID = parseInt( $attrs.placeholderId );
+  var placeholderID = parseInt( $attrs.placeholderid );
   var placeholders = $rootScope.pageContent.placeholders;
 
   // Try to grep the matching placeholder-object from "website-data" to the placeholder we are currently editing.

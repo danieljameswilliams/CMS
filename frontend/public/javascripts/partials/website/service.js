@@ -208,7 +208,7 @@ function _saveFetchedPagesToStorage( $filter, response, paths ) {
   }
 
   // Save it to sessionStorage, to use later.
-  sessionStorage.setItem( 'website', JSON.stringify( local ) );
+  sessionStorage.setItem( 'website', angular.toJson( local ) );
 
   return result;
 }
@@ -218,7 +218,7 @@ function remove_duplicates(objectsArray) {
   var usedObjects = {};
 
   for( var i = 0; i > objectsArray.length; i++ ) {
-    var so = JSON.stringify( objectsArray[i] );
+    var so = angular.toJson( objectsArray[i] );
 
     if ( usedObjects[so] )
       objectsArray.splice(i, 1);

@@ -56,7 +56,7 @@
               "id": 1,
               "html": {
                 "public": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>",
-                "admin": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div></div>"
+                "admin": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrlAdmin\"><button data-ng-click=\"onAddNewBlockButtonClick()\">Add new Block</button><div data-ng-repeat=\"block in placeholder.blocks\"><button data-ng-click=\"onAddNewBrickButtonClick()\">Add new Brick</button><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div>"
               }
             },
             "placeholders": [
@@ -244,7 +244,7 @@
               "id": 1,
               "html": {
                 "public": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>",
-                "admin": "<div class=\"placeholder\" data-placeholder-id=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div></div>"
+                "admin": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrlAdmin\"><button data-ng-click=\"onAddNewBlockButtonClick()\">Add new Block</button><div data-ng-repeat=\"block in placeholder.blocks\"><button data-ng-click=\"onAddNewBrickButtonClick()\">Add new Brick</button><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div>"
               }
             },
             "placeholders": [

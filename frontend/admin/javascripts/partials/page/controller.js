@@ -36,7 +36,9 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
     $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html.admin );
 
     // Event Listeners
-    $scope.$watch('pageContent', function( newValue, oldValue ) { return onPageContentChange.call( this, newValue, oldValue, pageId ); }, true);
+    $scope.$watch('pageContent', function( newValue, oldValue ) {
+      return onPageContentChange.call( this, newValue, oldValue, pageId );
+    }, true);
 
     // We need to compile the baseTemplate to make the controllers of the blocks and the bricks run.
     // Normally we would just write "$compile( $element.contents() )( $scope );", but because the content is rendered via
@@ -73,5 +75,13 @@ function onPageContentChange ( newValue, oldValue, pageId ) {
   result.website.pages[ index ].content[0] = newValue;
 
   // Create a saveWebsiteToStorage method
-  sessionStorage.setItem( 'website', JSON.stringify( result ) );
+  sessionStorage.setItem( 'website', angular.toJson( result ) );
+}
+
+function onAddNewBlockButtonClick( $scope ) {
+  console.log($scope.$parent.placeholderid);
+}
+
+function onAddNewBrickButtonClick( $scope ) {
+  console.log('Hello World');
 }
