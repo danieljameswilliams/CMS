@@ -34,14 +34,14 @@ function getPage ( $q, Website, path ) {
   var dfrd = $q.defer();
 
   // We do "Website.get()" without passing a array, to get the current page.
-  Website.get( [ path ] ).then(function( response ) {
+  Website.get( [ path ] ).then(function( data ) {
     // First we are checking to see if there was a response we could actually use,
     // For it to be usable, we need a object, that has a website - and that website need to have pages.
-    if( typeof(response) == 'object' && response.hasOwnProperty('website') && response.website.hasOwnProperty('pages') ) {
-      var website = response.website;
+    if( typeof(data) == 'object' && data.hasOwnProperty('website') && data.website.hasOwnProperty('pages') ) {
+      var website = data.website;
       var page;
 
-      // We then need to check if the page we are about to show the user is actually in the response, as requested.
+      // We then need to check if the page we are about to show the user is actually in the data, as requested.
       for( var i = 0; i < website.pages.length; i++ ) {
         var responsePage = website.pages[i];
 

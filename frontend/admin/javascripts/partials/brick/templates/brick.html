@@ -1,0 +1,31 @@
+<div class="brick" data-ng-model="brick">
+  <fieldset>
+    <input type="text" data-ng-model="brick.id" disabled>
+    <input type="text" data-ng-model="brick.name" placeholder="Brick name">
+    <textarea type="text" data-ng-model="brick.html.public" placeholder="Public templates"></textarea>
+    <textarea type="text" data-ng-model="brick.html.admin" placeholder="Admin templates"></textarea>
+  </fieldset>
+  <fieldset>
+    <ul data-ng-repeat="property in brick.properties" data-ng-model="brick.properties">
+      <li class="property-item">
+        <input type="text" name="name" data-ng-change="onPropertyNameKeyup();" ng-model="property.name" placeholder="Name">
+        <input type="text" name="slug" ng-model="property.slug" disabled placeholder="Slug">
+        <select name="type" data-ng-model="property.type">
+          <option value="" selected disabled>Select a type</option>
+          <option value="textfield">Textfield</option>
+          <option value="textarea">Textarea</option>
+          <option value="editor">Editor</option>
+          <option value="keyvalue">Key/Value</option>
+          <option value="boolean">Boolean</option>
+          <option value="tags">Tags</option>
+          <option value="link">Link</option>
+          <option value="date">Date</option>
+          <option value="time">Time</option>
+          <option value="datetime">Datetime</option>
+        </select>
+      </li>
+    </ul>
+    <button data-ng-click="onNewPropertyClicked();">Add a new property</button>
+  </fieldset>
+  <button data-ng-click="onBrickSaveClicked();">Save Brick</button>
+</div>

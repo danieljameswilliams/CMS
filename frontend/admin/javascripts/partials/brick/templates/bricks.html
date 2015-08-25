@@ -1,0 +1,38 @@
+<h1>Brick Editor</h1>
+<a href="/brick/">New Brick</a>
+<h3>Your bricks ({{ bricks.created.length }}):</h3>
+<ul>
+  <li ng-repeat="brick in bricks.created">
+    <strong>#{{ brick.id }} {{ brick.name }}</strong><br>
+    <span>Type: {{ brick.type }}</span><br>
+    <a href="/brick/{{ brick.id }}">Edit brick</a>
+    <br><br>
+  </li>
+</ul>
+
+<h3>Bricks by partner ({{ bricks.partner.length }}):</h3>
+<ul>
+  <li ng-repeat="brick in bricks.partner">
+    <strong>#{{ brick.id }} {{ brick.name }}</strong><br>
+    <span>Published: {{ brick.published }} - Type: {{ brick.type }}</span><br>
+    <br><br>
+  </li>
+</ul>
+
+<h3>Purchased bricks ({{ bricks.purchased.length }}):</h3>
+<ul>
+  <li ng-repeat="brick in bricks.purchased">
+    <strong>#{{ brick.id }} {{ brick.name }}</strong><br>
+    <span>Published: {{ brick.published }} - Type: {{ brick.type }}</span><br>
+    <br><br>
+  </li>
+</ul>
+
+<h3>Default bricks ({{ bricks.default.length }}):</h3>
+<ul>
+  <li ng-repeat="brick in bricks.default">
+    <strong>#{{ brick.id }} {{ brick.name }}</strong><br>
+    <span>Published: {{ brick.published }} - Type: {{ brick.type }}</span><br>
+    <br><br>
+  </li>
+</ul>

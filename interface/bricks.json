@@ -1,0 +1,37 @@
+{
+  "bricks": {
+    "created": [
+      {
+        "id": 1,
+        "name": "Spot 01",
+        "type": "Spot",
+        "html": {
+          "admin": [],
+          "public": []
+        },
+        "properties": {
+          "headline": {
+            "id": 1,
+            "name": "Overskrift",
+            "slug": "headline",
+            "type": "textfield"
+          },
+          "content": {
+            "id": 2,
+            "name": "Indhold",
+            "slug": "content",
+            "type": "textarea"
+          }
+        }
+      }
+    ],
+    "default": [],
+    "partner": [],
+    "purchased": []
+  },
+  "response": {
+    "execution_time": 0.1874988,
+    "status": 200,
+    "rendered_at": "23-05-2015 00:00:00"
+  }
+}

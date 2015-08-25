@@ -77,11 +77,3 @@ function onPageContentChange ( newValue, oldValue, pageId ) {
   // Create a saveWebsiteToStorage method
   sessionStorage.setItem( 'website', angular.toJson( result ) );
 }
-
-function onAddNewBlockButtonClick( $scope ) {
-  console.log($scope.$parent.placeholderid);
-}
-
-function onAddNewBrickButtonClick( $scope ) {
-  console.log('Hello World');
-}
