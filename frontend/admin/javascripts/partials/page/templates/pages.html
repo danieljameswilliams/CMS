@@ -3,8 +3,30 @@
   <!-- TODO: Make it possible (possibly with a filter) in ng-repeat to put children of a page in child, and then not render it as a individual page -->
   <li ng-repeat="page in pages | filter: { deleted: false }">
     <strong>#{{ page.id }} {{ page.name }}</strong><br>
-    <span>Published: {{ page.published }} - Type: {{ page.type }}</span><br>
-    <a href="/page/{{ page.id }}">Edit page</a> - <a href="//{{ host }}{{ page.link }}">Go to page</a>
+    <span>Schema: {{ page.type }}</span><br>
+
+    <!-- TODO: Make the active versions dynamic -->
+    <div>
+      <strong>Active Versions:</strong>
+      <select data-ng-model="page.active" data-ng-options="i.id as i.name for i in page.content"></select>
+    </div>
+    <a href="#">Create new version</a>
+    <br><br>
+    <!-- TODO: Make the active versions dynamic -->
+    <div>
+      <strong>Versions:</strong>
+      <ul data-ng-repeat="content in page.content">
+        <li>
+          <span>{{ content.name }}</span>
+          <a href="/page/{{ page.id }}?content={{ content.id }}">Edit page</a> <a href="//{{ host }}{{ page.link }}?content={{ content.id }}">View page</a>
+          <select>
+            <option disabled>Select a page template</option>
+            <option>Frontpage</option>
+            <option>Subpage</option>
+          </select>
+        </li>
+      </ul>
+    </div>
     <br><br>
   </li>
 </ul>

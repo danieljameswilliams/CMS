@@ -1,0 +1,23 @@
+<div class="slideshow">
+  <!-- Placeholder 1: Start -->
+  <div class="placeholder" data-ng-attr-placeholderid="1" data-ng-controller="placeholderCtrlAdmin">
+    <button data-ng-click="onAddNewBlockButtonClick()">Add new Block</button>
+    <div data-ng-repeat="block in placeholder.blocks">
+      <button data-ng-click="onAddNewBrickButtonClick()">Add new Brick</button>
+      <div data-ng-repeat="brick in block.bricks" bind-html-compile="brick.html.admin"></div>
+    </div>
+  </div>
+  <!-- Placeholder 1: End -->
+</div>
+
+<div class="spots">
+  <!-- Placeholder 2: Start -->
+  <div class="placeholder" data-ng-attr-placeholderid="2" data-ng-controller="placeholderCtrlAdmin">
+    <button data-ng-click="onAddNewBlockButtonClick()">Add new Block</button>
+    <div data-ng-repeat="block in placeholder.blocks">
+      <button data-ng-click="onAddNewBrickButtonClick()">Add new Brick</button>
+      <div data-ng-repeat="brick in block.bricks" bind-html-compile="brick.html.admin"></div>
+    </div>
+  </div>
+  <!-- Placeholder 2: End -->
+</div>

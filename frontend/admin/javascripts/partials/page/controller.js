@@ -27,18 +27,34 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
   var pageId = $routeParams.id;
 
   getPage( $q, Website, '/' ).then(function( page ) {
-    // TODO: Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
-    var pageContent = page.content[0];
+    var contentId;
+    var contentGiven = parseInt( getParameterByName('content') );
 
-    $rootScope.pageContent = pageContent;
+    if( contentGiven > 0 ) {
+      contentId = contentGiven;
+    }
+    else {
+      contentId = parseInt( page.active )
+    }
 
-    // Rendering the "base-template", directly from the "website-data".
-    $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html.admin );
+    // Find out what content Array Index it should be saved on (New/Exisiting draft or something else)
+    var index = page.content.map(function( content ) { return content.id; }).indexOf( contentId );
+    var pageContent = page.content[ index ];
 
-    // Event Listeners
-    $scope.$watch('pageContent', function( newValue, oldValue ) {
-      return onPageContentChange.call( this, newValue, oldValue, pageId );
-    }, true);
+    if( pageContent !== undefined ) {
+      $rootScope.pageContent = pageContent;
+
+      // Rendering the "base-template", directly from the "website-data".
+      $scope.baseTemplateHTML = $sce.trustAsHtml( pageContent.template.html.admin );
+
+      // Event Listeners
+      $scope.$watch('pageContent', function( newValue, oldValue ) {
+        return onPageContentChange.call( this, newValue, oldValue, pageId );
+      }, true);
+    }
+    else {
+      alert('No Content with ID ' + contentId + ' exist');
+    }
 
     // We need to compile the baseTemplate to make the controllers of the blocks and the bricks run.
     // Normally we would just write "$compile( $element.contents() )( $scope );", but because the content is rendered via
@@ -55,6 +71,7 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
 ////////////////////
 
 function getIndexInPagesArrayFromPageID ( pageId ) {
+  debugger;
   var pages = JSON.parse( sessionStorage.getItem('website') ).website.pages;
 
   for ( var i = 0; i < pages.length; i++ ) {
@@ -76,4 +93,11 @@ function onPageContentChange ( newValue, oldValue, pageId ) {
 
   // Create a saveWebsiteToStorage method
   sessionStorage.setItem( 'website', angular.toJson( result ) );
+}
+
+function getParameterByName( name ) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+    var results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }

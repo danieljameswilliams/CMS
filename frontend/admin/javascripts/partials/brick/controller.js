@@ -1,5 +1,6 @@
 angular.module('page').controller( 'brickStructureCtrl', [ '$scope', 'Brick', brickStructureCtrl ] );
 angular.module('page').controller( 'brickDesignerCtrl', [ '$scope', '$routeParams', '$filter', 'Brick', brickDesignerCtrl ] );
+angular.module('page').controller( 'brickSelectCtrl', [ '$scope', 'bricks', 'deferred', 'close', brickSelectCtrl ] );
 
 
 function brickStructureCtrl ( $scope, Brick ) {
@@ -41,6 +42,19 @@ function brickDesignerCtrl ( $scope, $routeParams, $filter, Brick) {
       }
     }
   });
+}
+
+function brickSelectCtrl ( $scope, bricks, deferred, close ) {
+  $scope.bricks = bricks;
+
+  var obj = {
+    deferred: deferred
+  };
+
+  $scope.onItemSelected = function( brick ) {
+    obj['brick'] = brick;
+    close( obj );
+  };
 }
 
 

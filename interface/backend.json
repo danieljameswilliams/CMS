@@ -43,10 +43,12 @@
         "deleted_at": null,
         "link": "/",
         "canonical": "/",
+        "active": 1,
         "content": [
           {
             "description": "Vi tilbyder en spr&oslash;d pizza eller al dente pasta, hver gang - Bare se hvad vores kunder mener om os.",
             "id": 1,
+            "name": "Raw",
             "last_edited_at": "23-05-2015 00:00:00",
             "last_edited_by": {
               "id": 1,
@@ -55,7 +57,7 @@
             "template": {
               "id": 1,
               "html": {
-                "public": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-model=\"placeholder.blocks\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div></div>",
+                "public": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div>",
                 "admin": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrlAdmin\"><button data-ng-click=\"onAddNewBlockButtonClick()\">Add new Block</button><div data-ng-repeat=\"block in placeholder.blocks\"><button data-ng-click=\"onAddNewBrickButtonClick()\">Add new Brick</button><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div>"
               }
             },
@@ -68,6 +70,160 @@
                         "id": 1,
                         "name": "Column1",
                         "order": 1,
+                        "schema": "Address",
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
+                        "properties":
+                        {
+                          "headline": {
+                            "id": 1,
+                            "slug": "headline",
+                            "name": "Overskrift",
+                            "type": "textfield",
+                            "value": "Hello, World"
+                          },
+                          "content": {
+                            "id": 2,
+                            "slug": "content",
+                            "type": "textarea",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        }
+                      },
+                      {
+                        "id": 2,
+                        "name": "Column2",
+                        "order": 2,
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
+                        "properties":
+                        {
+                          "headline": {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          "content": {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        }
+                      }
+                    ],
+                    "id": 1,
+                    "name": "Manchet",
+                    "order": 1
+                  },
+                  {
+                    "bricks": [
+                      {
+                        "id": 1,
+                        "name": "RichText",
+                        "order": 1,
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
+                        "properties":
+                        {
+                          "headline": {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          "content": {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        }
+                      }
+                    ],
+                    "id": 2,
+                    "name": "Text",
+                    "order": 2
+                  }
+                ],
+                "id": 1,
+                "name": "MainContent"
+              },
+              {
+                "blocks": [
+                  {
+                    "bricks": [
+                      {
+                        "id": 1,
+                        "name": "Spot01",
+                        "order": 1,
+                        "html": {
+                          "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
+                          "admin": "<i><input type=\"text\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
+                        },
+                        "properties":
+                        {
+                          "headline": {
+                            "id": 1,
+                            "key": "headline",
+                            "name": "Overskrift",
+                            "value": "Hello, World"
+                          },
+                          "content": {
+                            "id": 2,
+                            "key": "content",
+                            "name": "Indhold",
+                            "value": "Lorem ipsum dolor sit amet ..."
+                          }
+                        }
+                      }
+                    ],
+                    "id": 1,
+                    "name": "Manchet",
+                    "order": 1
+                  }
+                ],
+                "id": 2,
+                "name": "Right Column"
+              }
+            ],
+            "title": "H&oslash;j Kvalitet til lav pris hos Pizza &amp; Pasta Service",
+            "type": "Active"
+          },
+          {
+            "description": "Vi tilbyder en spr&oslash;d pizza eller al dente pasta, hver gang - Bare se hvad vores kunder mener om os.",
+            "id": 2,
+            "name": "Rewritten",
+            "last_edited_at": "23-05-2015 00:00:00",
+            "last_edited_by": {
+              "id": 1,
+              "name": "Daniel Williams"
+            },
+            "template": {
+              "id": 1,
+              "html": {
+                "public": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrl\"><div data-ng-repeat=\"block in placeholder.blocks\"><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.public\"></div></div></div>",
+                "admin": "<div class=\"placeholder\" data-ng-attr-placeholderid=\"1\" data-ng-controller=\"placeholderCtrlAdmin\"><button data-ng-click=\"onAddNewBlockButtonClick()\">Add new Block</button><div data-ng-repeat=\"block in placeholder.blocks\"><button data-ng-click=\"onAddNewBrickButtonClick()\">Add new Brick</button><div data-ng-repeat=\"brick in block.bricks\" bind-html-compile=\"brick.html.admin\"></div></div></div>"
+              }
+            },
+            "placeholders": [
+              {
+                "blocks": [
+                  {
+                    "bricks": [
+                      {
+                        "id": 1,
+                        "name": "Column1",
+                        "order": 1,
+                        "schema": "Address",
                         "html": {
                           "public": "<i>{{ brick.properties.headline.value }}</i><br><div>{{ brick.properties.content.value }}</div>",
                           "admin": "<i><input type=\"text\" ng-model=\"brick.properties.headline.value\"></i><br><div><input type=\"text\" ng-model=\"brick.properties.content.value\"></div>"
@@ -230,10 +386,12 @@
         "deleted_at": null,
         "link": "/about-us",
         "canonical": "/",
+        "active": 1,
         "content": [
           {
             "id": 1,
             "type": "Draft",
+            "name": "Raw",
             "title": "H&oslash;j Kvalitet til lav pris hos Pizza &amp; Pasta Service",
             "description": "Vi tilbyder en spr&oslash;d pizza eller al dente pasta, hver gang - Bare se hvad vores kunder mener om os.",
             "link": "https://revisions.hukai.do/1?token=accessfrombackend",

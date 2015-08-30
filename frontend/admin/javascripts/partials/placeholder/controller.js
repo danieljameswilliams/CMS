@@ -1,6 +1,6 @@
-angular.module('placeholder').controller( 'placeholderCtrlAdmin', [ '$scope', '$rootScope', '$controller', '$q', '$filter', '$element', '$compile', '$attrs', 'Website', placeholderCtrlAdmin ] );
+angular.module('placeholder').controller( 'placeholderCtrlAdmin', [ '$scope', '$rootScope', '$controller', '$q', '$filter', '$element', '$compile', '$attrs', 'Website', 'ModalService', placeholderCtrlAdmin ] );
 
-function placeholderCtrlAdmin($scope, $rootScope, $controller, $q, $filter, $element, $compile, $attrs, Website) {
+function placeholderCtrlAdmin($scope, $rootScope, $controller, $q, $filter, $element, $compile, $attrs, Website, ModalService) {
   // Initialize the super class and extend it.
   angular.extend(this, $controller( 'placeholderCtrl', { $scope: $scope, $rootScope: $rootScope, $filter: $filter, $element: $element, $compile: $compile, $attrs: $attrs, Website: Website } ));
 
@@ -9,7 +9,7 @@ function placeholderCtrlAdmin($scope, $rootScope, $controller, $q, $filter, $ele
   };
 
   $scope.onAddNewBrickButtonClick = function() {
-    return addNewBrick.call( this, $scope, $q );
+    return addNewBrick.call( this, $scope, $q, ModalService );
   };
 }
 
@@ -38,11 +38,9 @@ function addNewBlock( $scope, $q ) {
   return dfrd.promise;
 }
 
-function addNewBrick( $scope, $q ) {
+function addNewBrick( $scope, $q, ModalService ) {
   var placeholder = this.$parent.placeholder;
   var block = this.block;
-
-  console.log(this);
 
   if( block == undefined ) {
     // This means that the brick has been created in an unsaved block.
@@ -51,13 +49,14 @@ function addNewBrick( $scope, $q ) {
   else {
     var placeholderIndex = $scope.pageContent.placeholders.indexOf( placeholder );
     var blockIndex = $scope.pageContent.placeholders[placeholderIndex].blocks.indexOf( block );
-    var popup = showBrickTemplateSelectorPopup( $q );
+    var deferred = $q.defer();
 
     console.log('TODO: Adding brick to existing block.');
+    var popup = showBrickTemplateSelectorPopup( deferred, ModalService );
 
-    popup.then(function( data ) {
+    popup.then(function( brick ) {
       console.log('User selected a brick template to use');
-      $scope.pageContent.placeholders[placeholderIndex].blocks[blockIndex].bricks.push({ 'hello': 'world'});
+      $scope.pageContent.placeholders[placeholderIndex].blocks[blockIndex].bricks.push( brick );
     });
 
     popup.catch(function( message ) {
@@ -83,7 +82,7 @@ function showBlockNamingPopup(pageContent, $q) {
   });
 }
 
-function showBrickTemplateSelectorPopup( $q ) {
+function showBrickTemplateSelectorPopup( deferred, ModalService ) {
   var bricks = JSON.parse( sessionStorage.getItem('bricks') ).bricks;
   var templates = [];
 
@@ -96,15 +95,18 @@ function showBrickTemplateSelectorPopup( $q ) {
     }
   }
 
-  // TODO: Should show a modal to where the client can select a brick-type.
-  // TODO: Should render the brick in the assosiated block.
-  return function() {
-    return $q(function(resolve, reject) {
-      if( templates.length > 0 ) {
-        resolve( bricks );
-      } else {
-        reject( 'No Templates Available' );
-      }
+  ModalService.showModal({
+    templateUrl: "/javascripts/partials/brick/templates/brick_select.html",
+    controller: "brickSelectCtrl",
+    inputs: {
+      bricks: bricks,
+      deferred: deferred
+    }
+  }).then(function( modal ) {
+    modal.close.then(function( result ) {
+      result.deferred.resolve( result.brick );
     });
-  }
+  });
+
+  return deferred.promise;
 }

@@ -1,0 +1,25 @@
+<ul data-ng-repeat="(key, value) in bricks">
+  <strong>{{ key }}</strong><br>
+
+  <!-- Brick -->
+  <li data-ng-hide="value.length == 0">
+    <ul data-ng-repeat="brick in value">
+      <li>
+        <button data-ng-click="onItemSelected( brick )">
+          <strong>{{ brick.name }} ({{ brick.id }})</strong><br>
+          <span>{{ brick.type }}</span><br>
+          <ul data-ng-repeat="(key, value) in brick.properties">
+            <li>
+              <span>{{ key }}</span>
+            </li>
+          </ul>
+        </button>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Empty -->
+  <li data-ng-show="value.length == 0">
+    <span>There is no bricks available in this category.</span>
+  </li>
+</ul>
