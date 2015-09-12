@@ -72,14 +72,14 @@ function fetchWebsiteData ( paths, $http, $q ) {
   return _fetchPagesFromRemote( $q, $http, url );
 }
 
-function fetchAllWebsiteData ( $http, $q ) {
+function fetchAllWebsiteData ( $http, $q, $filter ) {
   var host = _findWebsiteHost();
 
   // If the user has a Authorization token, it will be added as a Request Header
   // In the $http-provider-config.
   var url = 'http://127.0.0.1:5000/website/' + host + '/all.json'; // http://api.cms.dk/website/www.example.com/all.json
 
-  return _fetchPagesFromRemote( $q, $http, url );
+  return _fetchPagesFromRemote( $q, $http, url ).then( function( response ) { return _saveFetchedPagesToStorage.call( this, $filter, response ); } );
 }
 
 
@@ -183,18 +183,20 @@ function _saveFetchedPagesToStorage( $filter, response, paths ) {
   if( sessionStorage.getItem('website') !== null ) {
     local = JSON.parse( sessionStorage.getItem('website') );
     var remote = response;
+    result = remote;
 
     var pagesWithDuplicates = local.website.pages.concat( remote.website.pages );
     var pages = remove_duplicates(pagesWithDuplicates);
 
-    // Get only the pages that was originally asked for, and save them to a new variable.
-    // By checking if each page are in the paths-array we initially made.
-    var requestedPages = $filter('filter')( pages, function( page ) { return (paths.indexOf( page.link ) > -1); } );
+    if(typeof(paths) !== 'undefined') {
+      // Get only the pages that was originally asked for, and save them to a new variable.
+      // By checking if each page are in the paths-array we initially made.
+      var requestedPages = $filter('filter')( pages, function( page ) { return (paths.indexOf( page.link ) > -1); } );
 
-    // We just put all our newly fetched and already stored pages into a new Array called "pages",
-    // But we only want to return the requested pages, but wrapped inside the website object. (e.g. { website: { ... pages: requestedPages } ...)
-    result = remote;
-    result.website.pages = requestedPages;
+      // We just put all our newly fetched and already stored pages into a new Array called "pages",
+      // But we only want to return the requested pages, but wrapped inside the website object. (e.g. { website: { ... pages: requestedPages } ...)
+      result.website.pages = requestedPages;
+    }
 
     // We will now put that new Array, containing all pages we have in total, into the local website variable,
     // so we can save the whole website to Storage later on.

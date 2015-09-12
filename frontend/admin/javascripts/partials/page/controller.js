@@ -71,7 +71,6 @@ function pageDesignerCtrl ( $scope, $rootScope, $q, $routeParams, $sce, $compile
 ////////////////////
 
 function getIndexInPagesArrayFromPageID ( pageId ) {
-  debugger;
   var pages = JSON.parse( sessionStorage.getItem('website') ).website.pages;
 
   for ( var i = 0; i < pages.length; i++ ) {
